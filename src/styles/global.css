@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --dark-back-color: #282c34;
+    --dark-back-color-secondry: #5f5f5f; 
+    --dark-font-color: #e0e0e0;
+    --dark-font-color-secondry: #d3f3ff ;
+    --light-back-color:var(--dark-font-color); 
+    --light-font-color:var(--dark-back-color);
+    --primary-color: #2fd3fc;
+}
+
+
+
+body, button {
+  font-family: 'Barlow Condensed', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+/* Navbar */
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.nav-link {
+    list-style: none;
+}
+
+.nav-link li {
+    display: inline-block;
+    padding: 0 20px; 
+}
+
+.nav-link li a{
+    transition: all 0.3s ease 0s;
+    
+}
+
+.nav-link li a:hover{
+    color: var(--primary-color)
+}
+
+.nav__btn{
+  background: none;
+  font-size: inherit;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+
+.nav__btn:hover{
+  color: var(--primary-color)
+}
+
+.white-content-a{
+  color: var(--light-font-color);
+}
+
+.dark-content-a{
+  color: var(--dark-font-color);
+}
+/* End of navbar CSS*/ 
+
+.container {
+    padding: 0 15%;
+}
+    
+.App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+  }
+  
+  .show-counter__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .time-display__number{
+    font-size: 100px;
+  }
+  
+  .buttons-panel__container{
+    display: flex;
+    justify-content:space-around;
+  }
+  
+  .buttons-panel__button{
+    background: none;
+    font-size: inherit;
+    background: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .buttons-panel__button:hover{
+    background-color: var(--dark-font-color-secondry);
+    border: 1px solid var(--dark-back-color) ;
+  }
+  
+  .btn{
+    background: none;
+    font-size: inherit;
+    background: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: none;
+  }
+  
+
+  /* Handling the CSS for toggling theme */
+
+  .white-content{
+    color: var(--light-font-color);
+    background-color: var(--light-back-color);
+  }
+
+  .dark-content{
+    color: var(--dark-font-color);
+    background-color: var(--dark-back-color);
+  }
+
+  .white-content-btn{
+    color: var(--light-font-color);
+    background-color: var(--light-back-color);
+    border: 1px solid var(--light-font-color);
+  }
+
+  .dark-content-btn{
+    color: var(--dark-font-color);
+    background-color: var(--dark-back-color);
+    border: 1px solid var(--dark-font-color);
+  }
+
+  /* CSS for Drawer */ 
+  .drawer__container {
+    --transition-speed: 0.3s;
+  }
+  
+  .drawer {
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: transform var(--transition-speed) ease;
+    z-index: 1000;
+  }
+  
+  .drawer.left {
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+  
+  .drawer__container.in.open .left {
+    transform: translateX(0);
+  }
+  
+  .backdrop {
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity var(--transition-speed) ease,
+      visibility var(--transition-speed) ease;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /*
+    Only apply the box-shadow when open to prevent the shadow
+    from appearing on the edge of the screen when inactive
+   */
+  .drawer__container.open .drawer {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .drawer__container.in.open .backdrop {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+  }
+  
+  /* Other posiyions: */
+  .drawer.right {
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+  }
+  
+  .drawer.top {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    height: 40%;
+  }
+  
+  .drawer.bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(100%);
+    height: 40%;
+  }
+  
+  .drawer__container.in.open .left,
+  .drawer__container.in.open .right {
+    transform: translateX(0);
+  }
+  
+  .drawer__container.in.open .top,
+  .drawer__container.in.open .bottom {
+    transform: translateY(0);
+  }
+
+
+/* Setting CSS */ 
+.setting__container{
+  margin: 10%;
+}
+
+.setting__row{
+  margin-bottom: 50px;
+}
+
+.setting__btn-container{
+  display: flex;
+  justify-content: center;
+  margin: 0px 20%;
+}
+/* end of CSS for setting*/ 
