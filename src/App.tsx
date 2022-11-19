@@ -5,6 +5,7 @@ import { Theme } from './features/themeSlice/Theme';
 import CounterByMe from './components/Counter/counter';
 import Navbar from './components/Navbar/Navbar';
 import Drawer from './components/Drawer/drawer';
+import Setting from './components/Setting/setting';
 function App() {
   const [isOpen, setIsOpen]=useState(false);
   
@@ -12,17 +13,14 @@ function App() {
     setIsOpen(state);
   } 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Navbar openDrawer={handleOpenDrawer}/>
-        <Drawer isOpen={isOpen} className='' position='left' removeContentWhileClosed={true} onClose={()=>setIsOpen(false)}>
-          <div>This is a drawer</div>
-        </Drawer>
-        <Counter />
-        <Theme/>
-        <CounterByMe value={0}/>
-        
-      </header>
+    <div className="container">
+      <Navbar openDrawer={handleOpenDrawer}/>
+      <Drawer isOpen={isOpen} className='' position='left' removeContentWhileClosed={true} onClose={()=>setIsOpen(false)}>
+        <Setting openDrawer={handleOpenDrawer}/>
+      </Drawer>
+      <Counter />
+      <Theme/>
+      {/* <CounterByMe value={0}/> */}
     </div>
   );
 }

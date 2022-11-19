@@ -1,11 +1,10 @@
 import "./counter.css"
-import {useState} from "react";
 
 type CounterProps = { 
-    value: number 
+    value: number
+    setValue: (state:number)=>void 
 }
 export default function CounterByMe(props:CounterProps) {
-const[value, setValue]=useState(0);
 
 return (
     <div>
@@ -16,7 +15,7 @@ return (
             //disabled={props.valueError}
             onClick={()=>{
                 //if(!props.valueError){
-                    setValue(value - 1)
+                    props.setValue(props.value - 1)
                 //}else{
                   //  console.log("Error")
                 }
@@ -25,12 +24,12 @@ return (
         >
             -
         </button>
-        <span className='counter__value'>{value}</span>
+        <span className='counter__value'>{props.value}</span>
         <span>minutes</span>
         <button
             className='counter__button'
             aria-label="Increment value"
-            onClick={()=>setValue(value + 1)}     
+            onClick={()=>props.setValue(props.value + 1)}     
         >
             +
         </button>

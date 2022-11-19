@@ -19,7 +19,7 @@ export const configSlice = createSlice({
             state.pomodoroDuration = action.payload;
         },
         setBreakDuration:(state, action:PayloadAction<number>)=>{
-            state.pomodoroDuration = action.payload;
+            state.breakDuration = action.payload;
         }
     }
 });
